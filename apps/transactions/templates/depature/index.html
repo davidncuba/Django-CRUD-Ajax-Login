@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+Depature
+{% endblock %}
+{% block title-header %}
+Depature
+{% endblock%}
+{% block block-name %}
+Depature List
+{% endblock %}
+{% block buttom %}
+<a href="{% url 'depature_add' %}" class="d-inline btn btn-primary justify-content-evenly float-right">Add Depature</a>
+{% endblock %}
+{% block main %}
+ <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Driver</th>
+                      <th scope="col">Depature</th>
+                      <th scope="col">Delivery</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for depature in depatures %}
+                    <tr>
+                      <th scope="row">{{depature.id}}</th>
+                      <td>{{depature.driver__username}} </td>
+                      <td>{{depature.departure__name}}</td>
+                      <td>{{depature.delivery__name}}</td>
+                      <td>{{depature.date_depature}}</td>
+                      <td>
+                        <a href="{% url 'depature_edit' depature.id %}" class="fas fa-pencil-alt"></a>
+                        <a href="#" class="fas fa-trash-alt ml-4 delete_depature" id="{{depature.id}}"></a>
+
+                       <td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+{% endblock %}
+
+{% block script %}
+<script>
+  
+$(document).click(function(e) {
+    if (e.target.classList.contains('delete_depature')) {
+      const url_delete = "{% url 'depature_delete' %}"
+    delete_lines(event.target.id, e, url_delete)
+    }
+   
+});
+</script>
+{% endblock %}

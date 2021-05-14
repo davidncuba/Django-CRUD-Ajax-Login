@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+Company
+{% endblock %}
+{% block title-header %}
+Company
+{% endblock%}
+{% block block-name %}
+Company List
+{% endblock %}
+{% block buttom %}
+<a href="{% url 'company_add' %}" class="d-inline btn btn-primary justify-content-evenly float-right">Add Company</a>
+{% endblock %}
+{% block main %}
+ <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">City</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for company in companys %}
+                    <tr>
+                      <th scope="row">{{company.id}}</th>
+                      <td>{{company.name}}</td>
+                      <td>{{company.city}}</td>
+                      <td>
+                        <a href="{% url 'company_edit' company.id %}" class="fas fa-pencil-alt"></a>
+                        <a href="#" class="fas fa-trash-alt ml-4 delete_company" id="{{company.id}}"></a>
+
+                       <td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+{% endblock %}
+
+{% block script %}
+  <script>
+  
+$(document).click(function(e) {
+    if (e.target.classList.contains('delete_company')) {
+      const url_delete = "{% url 'company_delete' %}"
+    console.log(e.target.id)
+    delete_lines(event.target.id, e, url_delete)
+    }
+   
+});
+  </script>
+{% endblock %}

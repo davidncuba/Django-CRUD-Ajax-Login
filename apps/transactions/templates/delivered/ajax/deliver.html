@@ -1,0 +1,30 @@
+<table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Driver</th>
+                      <th scope="col">Departure</th>
+                      <th scope="col">Date Departure</th>
+                      <th scope="col">Confirm Delivery</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for transaction in transactions %}
+                    <tr>
+                      <th scope="row">{{transaction.id}}</th>
+                      <td>{{transaction.driver}}</td>
+                      <td>{{transaction.departure}}</td>
+                      <td>{{transaction.date_depature}}</td>
+                       <td>
+                      <a href="#" class="fas fa-check-double ml-4 confirm_delivery" id="{{transaction.id}}"></a>
+                      </td>
+                      <td>
+                        <a href="#" class="fas fa-trash-alt ml-4 delete_company" id="{{transaction.id}}"></a>
+
+                       <td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>

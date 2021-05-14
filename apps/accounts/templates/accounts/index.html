@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+Users
+{% endblock %}
+{% block title-header %}
+Users
+{% endblock%}
+{% block block-name %}
+Users List
+{% endblock %}
+{% block buttom %}
+<a href="{% url 'account_add' %}" class="d-inline btn btn-primary justify-content-evenly float-right">Add User</a>
+{% endblock %}
+{% block main %}
+ <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">Admin</th>
+                      <th scope="col">Active</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for user in users %}
+                    <tr>
+                      <th scope="row">{{user.id}}</th>
+                      <td>{{user.username}}</td>
+                      <td>{{user.first_name}}</td>
+                      <td>{{user.last_name}}</td>
+                      <td>
+                      {% if user.is_staff %}
+                        <i class="fas fa-check"></i>
+                      {% else %}
+                        <i class="fas fa-times"></i>
+                      {% endif %}
+                      </td>
+                      <td>
+                      {% if user.is_active %}
+                        <i class="fas fa-check"></i>
+                      {% else %}
+                        <i class="fas fa-times"></i>
+                      {% endif %}
+                      </td>
+                      <td>
+                        <a href="{% url 'account_edit' user.id %}" class="fas fa-pencil-alt"></a>
+                        <a href="#" class="fas fa-trash-alt ml-4 delete_user" id="{{user.id}}"></a>
+
+                       <td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+{% endblock %}
+
+{% block script %}
+  <script>
+  
+$(document).click(function(e) {
+    if (e.target.classList.contains('delete_user')) {
+      const url_delete = "{% url 'account_delete' %}"
+    console.log(e.target.id)
+    delete_lines(event.target.id, e, url_delete)
+    }
+   
+});
+  </script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Add Depature
+{% endblock %}
+{% block title-header %}
+Depature
+{% endblock%}
+
+{% block block-name %}
+Add Depature
+{% endblock %}
+
+{% block main %}
+<div class="d-flex justify-content-center">
+  <div class="col col-lg-4">
+      <form method="post" action="{% url 'depature_save' %}">
+          {% csrf_token %}
+          <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Company Departure</label>
+                        <select id="company" class="form-control mb-3" name="departure">
+                          <option>Select</option>
+                          {% for company in companys%}
+                          <option id="{{company.id}}" value="{{company.id}}">{{company}}</option>
+                          {% endfor %}
+                        </select>
+                        <div id="driver">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Company Delivery</label>
+                        <select class="form-control mb-3" name="delivery">
+                          <option>Select</option>
+                          {% for company in companys%}
+                          <option id="{{company.id}}" value="{{company.id}}">{{company}}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    </div>
+          <button type="submit" class="btn btn-success float-right">Save Depature</button>
+      </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+
+$(company).change(function(e){
+     $.ajax({
+        url: '{% url "ajax_driver" %}',
+            data: {
+              'id': $(this).find('option:selected').attr('id')
+            },
+          success: function (data) {
+            $("#driver").html(data)
+          }
+      })    
+  }
+)
+
+</script>
+{% endblock %}

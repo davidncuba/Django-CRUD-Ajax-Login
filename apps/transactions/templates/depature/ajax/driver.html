@@ -1,0 +1,8 @@
+<label>Driver</label>
+<select class="form-control driver" name="driver">
+  <option>Select</option>
+  {% for driver in drivers%}
+    <option value="{{driver.user.id}}">{{driver.user.username}}</option>
+  {% endfor %}  
+</select>
+                        

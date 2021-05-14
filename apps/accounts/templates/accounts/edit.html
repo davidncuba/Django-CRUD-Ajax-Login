@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Edit User
+{% endblock %}
+
+{% block title-header %}
+  User
+{% endblock%}
+
+{% block block-name %}
+  Edit User
+{% endblock %}
+
+{% block main %}
+<div class="d-flex justify-content-center">
+  <div class="col col-lg-4">
+      <form method="post" action="{% url 'account_edit_save' user.id %}">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-success float-right">Edit User</button>
+      </form>
+  </div>
+</div>
+{% endblock %}

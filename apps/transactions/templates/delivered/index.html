@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+Delivered
+{% endblock %}
+{% block title-header %}
+Delivered
+{% endblock%}
+{% block block-name %}
+Delivered List
+{% endblock %}
+{% block buttom %}
+
+{% endblock %}
+{% block main %}
+ <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Select Company to Receive</label>
+                        <select id="company" class="form-control mb-3" name="company">
+                          <option>Select</option>
+                          {% for company in companys%}
+                          <option id="{{company.id}}" value="{{company.id}}">{{company}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                       
+                    </div>
+                    <div id="driver" class="col-sm-12">
+                        </div>
+{% endblock %}
+
+{% block script %}
+<script>
+
+$(company).change(function(e){
+     $.ajax({
+        url: '{% url "ajax_delivery_driver" %}',
+            data: {
+              'id': $(this).find('option:selected').attr('id')
+            },
+          success: function (data) {
+            $("#driver").html(data)
+          }
+      })    
+  }
+)
+$(document).click(function(e) {
+    if (e.target.classList.contains('confirm_delivery')) {
+      const url_delete = "{% url 'ajax_delivery_confirm' %}"
+      confirmDelivery(event.target.id, e, url_delete)
+    }
+   
+});
+confirmDelivery
+
+</script>
+{% endblock %}

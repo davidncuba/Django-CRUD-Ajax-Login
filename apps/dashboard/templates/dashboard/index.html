@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+Dashboard
+{% endblock %}
+{% block title-header %}
+Dashboard
+{% endblock%}
+
+{% block main %}
+<div class="d-flex justify-content-center">
+  <div class="col col-lg-3">
+    <label>Pick the Date</label>
+      <input class="w-100 pl-4" type="text" name="daterange" /></input>
+
+  </div>
+</div>
+<div id="data">
+</div>
+{% endblock %}
+
+{% block script %}
+
+<script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    $.ajax({
+        url: '{% url "date_filter" %}',
+            data: {
+              'start': start.format('YYYY-MM-DD 00:00:00' ),
+              'end': end.format('YYYY-MM-DD 00:00:00')
+            },
+          success: function (data) {
+            console.log(data)
+            $("#data").html(data)
+          }
+      })  
+  });
+});
+
+       
+
+
+</script>
+{% endblock %}

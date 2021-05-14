@@ -1,0 +1,30 @@
+<div class="border border-primary my-5 rounded">
+  <span class="d-flex justify-content-center">Total Records Filtered {{count}}</span>
+</div>
+<table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Driver</th>
+                      <th scope="col">Depature</th>
+                      <th scope="col">Date Depature</th>
+                      <th scope="col">Delivery</th>
+                      <th scope="col">Date Delivery</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for transaction in transactions %}
+                  <tr>
+                      <th scope="row">{{transaction.id}}</th>
+
+                      <td>{{transaction.driver}}</td>
+                      <td>{{transaction.departure}}</td>
+                      <td>{{transaction.date_depature}}</td>
+                      <td>{{transaction.delivery}}</td>
+                      <td>{{transaction.date_delivered}}</td>
+                      
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>

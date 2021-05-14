@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}
+Driver
+{% endblock %}
+{% block title-header %}
+Driver
+{% endblock%}
+{% block block-name %}
+Driver List
+{% endblock %}
+{% block buttom %}
+<a href="{% url 'driver_add' %}" class="d-inline btn btn-primary justify-content-evenly float-right">Add Driver</a>
+{% endblock %}
+{% block main %}
+ <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Company</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for drive in drivers %}
+                    <tr>
+                      <th scope="row">{{drive.id}}</th>
+                      <td>{{drive.user.first_name}}</td>
+                      <td>{{drive.company}}</td>
+                      <td>
+                        <a href="{% url 'driver_edit' drive.id %}" class="fas fa-pencil-alt"></a>
+                        <a href="#" class="fas fa-trash-alt ml-4 delete_company" id="{{drive.id}}"></a>
+
+                       <td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+{% endblock %}
+
+{% block script %}
+  <script>
+  
+$(document).click(function(e) {
+    if (e.target.classList.contains('delete_company')) {
+    del(event.target.id, e)
+    }
+   
+});
+
+function del(id, e){
+  Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+     $.ajax({
+        url: '{% url "driver_delete" %}',
+            data: {
+              'id': id
+            },
+        dataType: 'json',
+          success: function (data) {
+             if(data.delete == 1){
+                Swal.fire(
+                  'Deleted!',
+                  'Your Company has been deleted.',
+                  'success'
+                )
+               $(`#${id}`).closest('tr').remove()
+             }
+            
+          }
+       })    
+    }
+  })
+}
+
+  </script>
+{% endblock %}
