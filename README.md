@@ -1,6 +1,3 @@
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -116,9 +113,4 @@ See the [open issues](https://github.com/davidncuba/Django-CRUD-Ajax-Login/issue
 ## Contact
 
 
-Project Link: [https://github.com/davidncuba/Django-CRUD-Ajax-Login](https://github.com/davidncuba/Django-CRUD-Ajax-Login)
 
-
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/davidcuba
-[product-screenshot]: images/screenshot.png
