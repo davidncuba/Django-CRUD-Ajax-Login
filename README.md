@@ -6,7 +6,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/davidncuba/Django-CRUD-Ajax-Login">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="180" height="80">
   </a>
 
   <h3 align="center">Delivery System</h3>
@@ -17,9 +17,7 @@
     <a href="https://github.com/davidncuba/Django-CRUD-Ajax-Login"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/davidncuba/Django-CRUD-Ajax-Login">View Demo on Heroku</a>
-    ·
-    <a href="https://github.com/davidncuba/Django-CRUD-Ajax-Login/issues">Report Bug</a>
+      <a href="https://github.com/davidncuba/Django-CRUD-Ajax-Login/issues">Report Bug</a>
     ·
     <a href="https://github.com/davidncuba/Django-CRUD-Ajax-Login/issues">Request Feature</a>
   </p>
@@ -45,11 +43,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -58,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="images/screenshot.png" alt="Logo" width="1000" height="600">
 
 Thank you for read my project. This is my CRUD project in django to improve my knologe in programing language, and I'm feeling amazing. I spended around 12 hours to finish the first part of this project.
 
@@ -93,7 +86,8 @@ This is an example of how to list things you need to use the software and how to
 ### Installation
 
 1. Clone the repo
-   ```git clone https://github.com/davidncuba/Django-CRUD-Ajax-Login.git
+   ```
+   git clone https://github.com/davidncuba/Django-CRUD-Ajax-Login.git
    ```
 
 
