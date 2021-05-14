@@ -88,7 +88,8 @@ This is an example of how to list things you need to use the software and how to
 ### Installation
 
 1. Clone the repo
-   ```git clone https://github.com/davidncuba/Django-CRUD-Ajax-Login.git
+   ```
+   git clone https://github.com/davidncuba/Django-CRUD-Ajax-Login.git
    ```
 
 
